@@ -18,6 +18,9 @@ services:
     labels:
       - traefik.http.routers.traefik.rule=Host(`traefik.docker.localhost`)
       - traefik.http.services.traefik.loadbalancer.server.port=8080
+    networks:
+      - proxy
+      - default
 
   whoami:
     # A container that exposes an API to show its IP address
@@ -97,3 +100,7 @@ volumes:
     driver: local
   redis_data:
     driver: local
+
+networks:
+  proxy:
+    external: true

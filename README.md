@@ -4,6 +4,12 @@ Use litellm as an openai proxy server for redis caching and llm observability wi
 
 Copy `.env.example` to `.env` and update missing environment variables.
 
+Now, run the following command to create an external docker network:
+
+```bash
+docker network create proxy
+```
+
 Then, run the following command to start the proxy server:
 
 ```bash
@@ -33,3 +39,7 @@ address=/.localhost/127.0.0.1
 ```
 
 Finally, to ensure that your local system leverages the newly created DNS server update your `/etc/resolv.conf` by adding `nameserver 127.0.0.1` to the first `nameserver` entry if it's not already present.
+
+## Resources
+
+* [Traefik, Docker and dnsmasq to simplify container networking](https://www.adaltas.com/en/2022/11/17/traefik-docker-dnsmasq/)
